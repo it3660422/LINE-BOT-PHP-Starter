@@ -16,10 +16,15 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Build message to reply back
+
+			if (strtolower($text)==strtolower('BTC')){
+				$btcPrice = btcPrice();
+			}
 			$messages = [
 				'type' => 'text',
-				'text' => 'KakKAK'
+				'text' => 'Current BTC price is: '.$btcPrice
 			];
+
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
@@ -41,3 +46,13 @@ if (!is_null($events['events'])) {
 	}
 }
 echo $result;
+function btcPrice() {
+	$nonce=time();
+	$url='https://bittrex.com/api/v1.1/public/getticker?market=USDT-BTC';
+	$ch = curl_init($url);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$execResult = curl_exec($ch);
+	$obj = json_decode($execResult, true);
+	$btcPrice = $obj["result"]["Last"];
+	return $btcPrice; 
+}
