@@ -24,13 +24,9 @@ if (!is_null($events['events'])) {
 			} 
 
 
-
-
-
-
 			$messages = [
 				'type' => 'text',
-				'text' => $msg
+				'text' => 'Test'
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -54,6 +50,7 @@ if (!is_null($events['events'])) {
 	}
 }
 echo $result;
+
 function btcPrice() {
 	$nonce=time();
 	$url='https://bittrex.com/api/v1.1/public/getticker?market=USDT-BTC';
