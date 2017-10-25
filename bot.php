@@ -49,7 +49,7 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo $result;
+echo $data;
 
 function btcPrice() {
 	$nonce=time();
