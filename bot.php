@@ -17,16 +17,16 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			// Build message to reply back
-			$msg = 'Criteria is not match!!!'
+			$msg = 'Criteria is not match!!!';
 			if (strtolower($text)==strtolower('BTC')){
 				$btcPrice = btcPrice();
-				$msg ='Current BTC price is: '.$btcPrice
+				$msg ='Current BTC price is: '.$btcPrice;
 			} 
 
 
 			$messages = [
 				'type' => 'text',
-				'text' => 'Test'
+				'text' => $msg
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
